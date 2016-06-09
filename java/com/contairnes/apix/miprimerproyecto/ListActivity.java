@@ -1,37 +1,58 @@
 package com.contairnes.apix.miprimerproyecto;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 
-public class ListActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+
+public class ListActivity extends Activity {
+
+    EditText etPalabra;
+    ListView lvLista;
+    Button btnAgregar;
+    ArrayList<Tweet> valores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-    }
+        etPalabra = (EditText)findViewById(R.id.editText3);
+        lvLista = (ListView) findViewById(R.id.listView);
+        btnAgregar = (Button) findViewById(R.id.button6);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_list, menu);
-        return true;
-    }
+        valores = new ArrayList<>();
+        Tweet valor = new Tweet("Hola","Mundo","09-06-16");
+        valores.add(valor);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        valor = new Tweet("Luis","Barrios","09-06-16");
+        valores.add(valor);
+        valor = new Tweet("Jireh","Marcela","09-06-16");
+        valores.add(valor);
+        valor = new Tweet("Fernando","Mauricio","09-06-16");
+        valores.add(valor);
+        valor = new Tweet("Hola","Mundo","09-06-16");
+        valores.add(valor);
+        valor = new Tweet("Hola","Mundo","09-06-16");
+        valores.add(valor);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        valor = new Tweet("Hola","Mundo","09-06-16");
+        valores.add(valor);
 
-        return super.onOptionsItemSelected(item);
+
+        valor = new Tweet("Hola","Mundo","09-06-16");
+        valores.add(valor);
+        valor = new Tweet("Hola","Mundo","09-06-16");
+        valores.add(valor);
+
+
+
+        TweetAdapter adaptador = new TweetAdapter(this, valores);
+
+        lvLista.setAdapter(adaptador);
+
     }
 }
